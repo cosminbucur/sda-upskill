@@ -19,10 +19,12 @@
         <module>parent-boot-2</module>
         <module>spring-boot</module>
         <module>spring-data-jpa</module>
-        <module>spring-security</module>
         <module>spring-boot-rest</module>
-
         <module>testing-advanced</module>
+
+        <module>spring-security</module>
+        <module>spring-oauth2</module>
+        <module>spring-webflux</module>
     </modules>
 
     <properties>
@@ -34,6 +36,7 @@
         <spring-data.version>2.3.4.RELEASE</spring-data.version>
         <hibernate.version>5.4.22.Final</hibernate.version>
         <hibernate-validator.version>6.1.0.Final</hibernate-validator.version>
+        <javax-validator.version>2.0.1.Final</javax-validator.version>
         <h2.version>1.4.200</h2.version>
         <mysql.version>8.0.18</mysql.version>
         <jackson.version>2.11.2</jackson.version>
