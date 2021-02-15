@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    username: player_projection_manager_admin
+    password: player_projection_manager_admin
+    name: player_projection_manager
+    url: "jdbc:postgresql://localhost:5432/player_projection_manager"
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:

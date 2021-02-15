@@ -20,7 +20,7 @@ public class StrawHouseBuilder implements HouseBuilder {
 
     @Override
     public void buildRoof() {
-        house.setFoundation("straw");
+        house.setRoof("straw");
     }
 
     @Override

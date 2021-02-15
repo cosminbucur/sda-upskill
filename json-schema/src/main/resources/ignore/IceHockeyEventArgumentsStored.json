@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schemaId": "ast.v1.IceHockeyEventArgumentsStored",
+  "$owner": "Kambi_Dev_Wild@kambi.com",
+  "$topics": [
+    "dp.v2.internal.ast.EventArgumentsStored"
+  ],
+  "title": "Event arguments stored",
+  "description": "Contains all event arguments saved or updated. This are for all sports, clients can filter for interested sport.",
+  "type": "object",
+  "required": [
+    "eventId",
+    "version",
+    "lastUpdated",
+    "sport",
+    "matchType",
+    "matchStructure",
+    "matchState",
+    "matchPredictions",
+    "playerPredictions",
+    "offeringArguments"
+  ],
+  "properties": {
+    "eventId": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Kambi event ID"
+    },
+    "version": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Version of the arguments stored. Represents the number of updated to the arguments."
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp with timezone of when arguments were stored"
+    },
+    "sport": {
+      "type": "string",
+      "description": "Sport ICE_HOCKEY"
+    },
+    "matchType": {
+      "type": "string",
+      "description": "Type of match E.g. FIBA / NBA for basketball"
+    },
+    "matchStructure": {
+      "type": "string",
+      "description": "Structure of match E.g. 3x20+OT+PS for Ice Hockey"
+    },
+    "matchState": {
+      "$ref": "IceHockeyDefinitionsSchema.json#/definitions/IceHockeyMatchState"
+    },
+    "matchPredictions": {
+      "type": "object",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "oneXTwo": {
+              "$ref": "../schema/GenericDefinitions.json#/definitions/OneXTwoParameters"
+            }
+          },
+          "required": [
+            "oneXTwo"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "overUnder": {
+              "$ref": "../schema/GenericDefinitions.json#/definitions/OverUnderLineParameters"
+            }
+          },
+          "required": [
+            "overUnder"
+          ]
+        }
+      ]
+    },
+    "playerPredictions": {
+      "$ref": "IceHockeyDefinitionsSchema.json#/definitions/IceHockeyPlayerPredictions"
+    },
+    "offeringArguments": {
+      "$ref": "OfferingArguments.json"
+    }
+  }
+}

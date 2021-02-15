@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schemaId": "sda.v1.MyObject",
+  "$owner": "test@sda.com",
+  "title": "My object title",
+  "description": "My object properties",
+  "type": "object",
+  "required": [
+    "eventId",
+    "version"
+  ],
+  "properties": {
+    "eventId": {
+      "type": "integer",
+      "format": "int64",
+      "description": "the description"
+    },
+    "version": {
+      "type": "integer",
+      "format": "int64",
+      "description": "the description"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "eventId": 1,
+  "matchPredictions": {
+    "overUnder": {
+      "line": 2.5,
+      "over": 250,
+      "under": 150
+    },
+    "oneXTwo": {
+      "home": 135,
+      "draw": 200,
+      "away": 333
+    }
+  }
+}

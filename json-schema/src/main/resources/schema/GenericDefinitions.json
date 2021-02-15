@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Team": {
+      "type": "string",
+      "enum": [
+        "HOME",
+        "AWAY"
+      ]
+    },
+    "GenericPlayer": {
+      "type": "object",
+      "properties": {
+        "playerId": {
+          "$comment": "aka participant ID",
+          "type": "number"
+        },
+        "team": {
+          "$ref": "#/definitions/Team"
+        }
+      },
+      "required": [
+        "playerId",
+        "team"
+      ]
+    },
+    "OneXTwoParameters": {
+      "type": "object",
+      "properties": {
+        "home": {
+          "type": "number",
+          "minimum": 0
+        },
+        "away": {
+          "type": "number",
+          "minimum": 0
+        },
+        "draw": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "home",
+        "away",
+        "draw"
+      ]
+    },
+    "OverUnderLineParameters": {
+      "type": "object",
+      "properties": {
+        "line": {
+          "type": "number"
+        },
+        "over": {
+          "type": "number"
+        },
+        "under": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "line",
+        "over",
+        "under"
+      ]
+    },
+    "3WayOverUnderLineParameters": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/3WayOverUnderLineParameters"
+        }
+      ],
+      "properties": {
+        "exact": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "exact"
+      ]
+    }
+  }
+}

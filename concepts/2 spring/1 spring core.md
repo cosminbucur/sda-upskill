@@ -4,6 +4,6 @@
 
 # creating and configuring an application context
 
-# using profiles
-
-# understanding the basics of AOP
+- @Configuration
+- @Bean
+- @Component

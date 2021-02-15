@@ -1,9 +1,30 @@
 # REST principles
 
+CREATE READ UPDATE DELETE
+
 # spring MVC support for restful applications
 
-# restful clienst with the RestTemplate
+- @RestController
+- @RequestMapping
+- @PathParam
+- @PathVariable
 
-# spring HATEOAS
+# controller layer
 
-https://medium.com/kth-distributed-systems/testing-microservices-in-spring-boot-applications-tools-and-techniques-b9c27d865f88
+- json
+
+# manual testing
+
+- postman
+
+# restful client with the RestTemplate
+
+# restful client with WebClient
+
+# open API
+
+- generate classes using json schema
+
+# understanding the basics of AOP
+
+- global exception handler

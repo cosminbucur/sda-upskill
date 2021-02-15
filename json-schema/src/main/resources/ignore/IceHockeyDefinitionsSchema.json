@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "IceHockeyMatchState": {
+      "type": "object",
+      "$comment": "TODO: Just a subset for now - to be extended based on consumer needs",
+      "properties": {
+        "currentLifetimeId": {
+          "type": "string",
+          "$comment": "Do intermissions count as lifetimeIds? e.g. INTERMISSION_PERDIOD_1_2?",
+          "enum": [
+            "PREMATCH",
+            "PERIOD1",
+            "PERIOD2",
+            "PERIOD3",
+            "OT",
+            "PS"
+          ]
+        },
+        "matchClock": {
+          "$comment": "In seconds, descending; 0 for pre-match",
+          "type": "integer"
+        },
+        "homeScore": {
+          "type": "integer"
+        },
+        "awayScore": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "awayScore",
+        "homeScore",
+        "matchClock",
+        "currentLifetimeId"
+      ]
+    },
+    "IceHockeyPlayerPredictions": {
+      "type": "object",
+      "properties": {
+        "homePlayers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IceHockeyPlayerPrediction"
+          }
+        },
+        "awayPlayers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IceHockeyPlayerPrediction"
+          }
+        }
+      },
+      "required": [
+        "homePlayers",
+        "awayPlayers"
+      ]
+    },
+    "IceHockeyPlayerPrediction": {
+      "type": "object",
+      "properties": {
+        "player": {
+          "$ref": "../schema/GenericDefinitions.json#/definitions/GenericPlayer"
+        },
+        "scoreLikeliness": {
+          "type": "number"
+        },
+        "assistLikeliness": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "player",
+        "assistLikeliness",
+        "scoreLikeliness"
+      ]
+    }
+  }
+}
