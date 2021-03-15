@@ -12,11 +12,11 @@ class JsonSchemaTest {
     @Test
     void givenInvalidInput_whenValidating_thenInvalid() throws ValidationException {
         JSONObject jsonSchema = new JSONObject(
-                new JSONTokener(JsonSchemaTest.class.getResourceAsStream("/schema/JsonSchema.json")));
-        JSONObject jsonSubject = new JSONObject(
+                new JSONTokener(JsonSchemaTest.class.getResourceAsStream("/schema/ComplexSchema.json")));
+        JSONObject jsonObject = new JSONObject(
                 new JSONTokener(JsonSchemaTest.class.getResourceAsStream("/json/valid.json")));
 
         Schema schema = SchemaLoader.load(jsonSchema);
-        schema.validate(jsonSubject);
+        schema.validate(jsonObject);
     }
 }

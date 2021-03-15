@@ -7,3 +7,14 @@
 - @Configuration
 - @Bean
 - @Component
+
+- @ComponentScan
+
+- @Qualifier
+
+- @Scope
+
+# AOP
+
+- create pointcut
+- before advice

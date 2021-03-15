@@ -1,9 +1,8 @@
 spring:
   datasource:
-    username: player_projection_manager_admin
-    password: player_projection_manager_admin
-    name: player_projection_manager
-    url: "jdbc:postgresql://localhost:5432/player_projection_manager"
+    username: root
+    password: root
+    url: "jdbc:mysql://localhost:5432/spring-rest-tutorial"
   jpa:
     hibernate:
       ddl-auto: update

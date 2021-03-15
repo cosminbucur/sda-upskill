@@ -11,8 +11,8 @@ public class PayByPayPal implements PayStrategy {
     private static final Map<String, String> DATA_BASE = new HashMap<>();
 
     static {
-        DATA_BASE.put("amanda1985", "amanda@ya.com");
-        DATA_BASE.put("qwerty", "john@amazon.eu");
+        DATA_BASE.put("ana", "ana@gmail.com");
+        DATA_BASE.put("paul", "paul@gmail.com");
     }
 
     private final BufferedReader READER = new BufferedReader(new InputStreamReader(System.in));

@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schemaId": "sda.v1.ComplexSchema",
+  "$owner": "user@sda.com",
+  "title": "Parent state",
+  "description": "Contains most important schema objects.",
+  "type": "object",
+  "required": [
+    "id",
+    "lastUpdated",
+    "name",
+    "childObject"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "object id"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "timestamp with timezone"
+    },
+    "name": {
+      "type": "string",
+      "description": "parent name"
+    },
+    "childObject": {
+      "$ref": "ChildObject.json"
+    }
+  }
+}

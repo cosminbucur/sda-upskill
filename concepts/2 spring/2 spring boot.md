@@ -1,7 +1,7 @@
 # dependency management
 
 - spring boot parent vs dependency management
-- multi maven project setup (x)
+- multi maven project setup
 
 # autoconfiguration
 

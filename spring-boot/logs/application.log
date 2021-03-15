@@ -1,0 +1,6 @@
+#logback.classic pattern: %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+#logback.classic pattern: %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+#logback.classic pattern: %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+#logback.classic pattern: %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+#logback.classic pattern: %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+#logback.classic pattern: %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n

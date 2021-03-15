@@ -1,15 +1,27 @@
 {
-  "eventId": 1,
-  "matchPredictions": {
-    "overUnder": {
-      "line": 2.5,
-      "over": 250,
-      "under": 150
+  "id": 123,
+  "lastUpdated": "2019-12-21T06:26:51.933015Z",
+  "name": "invitation",
+  "childObject": {
+    "clock": {
+      "status": "ACTIVE",
+      "clockRunning": true
     },
-    "oneXTwo": {
-      "home": 135,
-      "draw": 200,
-      "away": 333
-    }
+    "events": [
+      {
+        "location": "Romania",
+        "time": {
+          "minutes": 10,
+          "seconds": 30
+        }
+      },
+      {
+        "location": "Germany",
+        "time": {
+          "minutes": 5,
+          "seconds": 15
+        }
+      }
+    ]
   }
 }
