@@ -15,6 +15,6 @@ appender("File-Appender", FileAppender) {
     }
 }
 
-logger("com.fm.logback", INFO, ["File-Appender"])
+logger("com.sda.spring.boot", INFO, ["File-Appender"])
 
 root(INFO, ["Console-Appender"])

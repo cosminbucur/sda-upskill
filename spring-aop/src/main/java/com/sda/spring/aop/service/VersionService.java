@@ -14,6 +14,6 @@ public class VersionService {
     @Countable
     @Loggable
     public String getVersion(String appName) {
-        return appName + " version: " + version;
+        return "app name: " + appName + ", version: " + version;
     }
 }

@@ -13,6 +13,7 @@ public class BookServiceAspect {
 
     private static final Logger log = LoggerFactory.getLogger(BookServiceAspect.class);
 
+    // designator
     // print method name before each method
     @Before("execution(* com.sda.spring.aop.service.BookService.*(..))")
     public void logBeforeAll(JoinPoint joinPoint) {

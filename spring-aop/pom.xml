@@ -27,6 +27,8 @@
             <artifactId>aspectjrt</artifactId>
             <version>1.9.6</version>
         </dependency>
+
+        <!-- logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>

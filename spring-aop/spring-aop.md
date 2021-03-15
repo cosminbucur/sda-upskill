@@ -16,6 +16,15 @@
 - aspectjweaver
 - aspectjrt
 
+## method aspect
+
+- BookServiceAspect
+  - @Before
+  - @After
+  - @AfterReturning
+  - @AfterThrowing
+  - @Around
+
 ## count the method calls
 
 - @Countable

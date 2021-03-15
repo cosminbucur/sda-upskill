@@ -17,7 +17,7 @@ public class SpringAOPApplication {
         outputService = context.getBean(OutputService.class);
         bookService = context.getBean("bookService", BookService.class);
 
-        testExecutionAspect();
+//        testExecutionAspect();
         testAnnotationAspect();
     }
 

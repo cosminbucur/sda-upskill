@@ -14,8 +14,12 @@ public class PropertyCommandLineRunner implements CommandLineRunner {
     @Autowired
     private CustomProperties customProperties;
 
+    @Autowired
+    private PropertyReader propertyReader;
+
     @Override
     public void run(String... args) {
-        logger.info("custom {}", customProperties);
+        logger.info("custom properties (spring): {}", propertyReader);
+        logger.info("custom properties (spring boot): {}", customProperties);
     }
 }
