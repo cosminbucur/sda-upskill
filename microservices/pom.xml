@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>parent-boot-2</artifactId>
+        <groupId>com.sda</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>microservices</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>book-catalog-service</module>
+        <module>book-info-service</module>
+        <module>ratings-data-service</module>
+    </modules>
+
+</project>
