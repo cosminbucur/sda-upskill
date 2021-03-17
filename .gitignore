@@ -10,3 +10,4 @@
 log/
 */target/
 */logs/
+/microservices/*/target/

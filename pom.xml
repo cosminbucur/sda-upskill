@@ -37,6 +37,8 @@
         <!-- security -->
         <module>spring-security</module>
         <module>spring-oauth2</module>
+
+        <module>microservices</module>
     </modules>
 
     <properties>
