@@ -2,28 +2,27 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>parent-boot-2</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-
-    <name>parent-boot-2</name>
-    <packaging>pom</packaging>
-    <description>Parent for all Spring Boot 2 modules</description>
-
     <parent>
         <artifactId>sda-upskill</artifactId>
         <groupId>com.sda</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>parent-boot-2</artifactId>
+
+    <name>parent-boot-2</name>
+    <packaging>pom</packaging>
+    <description>Parent for all Spring Boot 2 modules</description>
 
     <properties>
         <spring-boot.version>2.4.2</spring-boot.version>
         <mysql.version>8.0.21</mysql.version>
         <h2.version>1.4.200</h2.version>
-        <javax-validator.version>2.0.1.Final</javax-validator.version>
-        <hibernate-validator.version>6.1.6.Final</hibernate-validator.version>
+        <bootstrap.version>4.3.1</bootstrap.version>
     </properties>
 
+    <!-- used when project has a parent other than spring parent -->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -37,11 +36,14 @@
     </dependencyManagement>
 
     <dependencies>
+        <!-- used when project has no parent -->
         <!--        <dependency>-->
         <!--            <groupId>org.springframework.boot</groupId>-->
         <!--            <artifactId>spring-boot-starter-parent</artifactId>-->
         <!--            <version>${spring-boot.version}</version>-->
         <!--        </dependency>-->
+
+        <!-- Enable junit 5 tests -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -58,6 +60,7 @@
     <build>
         <pluginManagement>
             <plugins>
+                <!-- Package as an executable jar/war -->
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>

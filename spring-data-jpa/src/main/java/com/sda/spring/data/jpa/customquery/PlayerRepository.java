@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import javax.transaction.Transactional;
 import java.time.ZonedDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -15,6 +16,9 @@ public interface PlayerRepository extends JpaRepository<Player, Integer> {
 
     // there is no insert in JPA, must use native query
     // return void or int/Integer
+    // native queries are not validated at startup
+    // https://www.baeldung.com/spring-data-jpa-modifying-annotation
+    @Transactional
     @Modifying
     @Query(value = "INSERT INTO player (id, name, active) VALUES (:id, :name, :active)", nativeQuery = true)
     int save(
@@ -85,17 +89,20 @@ public interface PlayerRepository extends JpaRepository<Player, Integer> {
     // update
 
     // there is no update in JPA, must use native query
+    @Transactional
     @Modifying
     @Query(value = "UPDATE player p SET p.name = :name WHERE p.active = :active", nativeQuery = true)
     int updateName(@Param("name") String name, @Param("active") boolean active);
 
     // delete
 
+    @Transactional
     @Modifying
     @Query("DELETE FROM Player p WHERE p.name = :name")
     int deleteByName(@Param("name") String name);
 
     // does not support return List<Player>
+    @Transactional
     @Modifying
     @Query("DELETE FROM Player p WHERE p.active = :active")
     int deleteByActive(@Param("active") boolean active);

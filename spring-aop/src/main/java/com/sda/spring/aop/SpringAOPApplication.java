@@ -6,7 +6,6 @@ import com.sda.spring.aop.service.OutputService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-// https://howtodoinjava.com/spring-aop-tutorial
 public class SpringAOPApplication {
 
     private static BookService bookService;
@@ -17,7 +16,7 @@ public class SpringAOPApplication {
         outputService = context.getBean(OutputService.class);
         bookService = context.getBean("bookService", BookService.class);
 
-//        testExecutionAspect();
+        testExecutionAspect();
         testAnnotationAspect();
     }
 

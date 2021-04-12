@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div th:fragment="footer">
+
+    <div class="container">
+
+        <footer>
+            <!-- this is footer -->
+            <span sec:authorize="isAuthenticated()">
+                    Logged user: <span sec:authentication="name"></span> |
+                    Roles: <span sec:authentication="principal.authorities"></span> |
+                    <a th:href="@{/logout}">Log out</a>
+                </span>
+
+            <!-- load jquery -->
+            <script crossorigin="anonymous"
+                    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+            <!-- load popper -->
+            <script crossorigin="anonymous"
+                    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+            <!-- load bootstrap -->
+            <script src="webjars/bootstrap/4.6.0/js/bootstrap.min.js"
+                    type="text/javascript"></script>
+
+            <!-- load custom javascript -->
+            <script src="../../js/main.js"
+                    type="text/javascript"></script>
+        </footer>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,11 +1,24 @@
 package com.sda.spring.data.jpa.validation.dto;
 
+import javax.validation.constraints.*;
+
 public class UserWriteDto {
 
+    @NotEmpty(message = "name cannot be empty")
     private String name;
+
+    @Email(message = "email invalid format")
     private String email;
+
+    @AssertTrue(message = "consent must be accepted")
     private boolean consented;
+
+    @Size(min = 10, max = 100, message =
+            "description should be between 10 - 100 characters")
     private String aboutMe;
+
+    @Min(value = 18, message = "age should be at least 18")
+    @Max(value = 80, message = "age should be maximum 80")
     private int age;
 
     public String getName() {

@@ -2,6 +2,7 @@ package com.sda.spring.boot.redis.car;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "car")
@@ -12,6 +13,7 @@ public class Car implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String owner;
     private String brand;
     private String model;
     private int price;
@@ -19,7 +21,8 @@ public class Car implements Serializable {
     public Car() {
     }
 
-    public Car(String brand, String model, int price) {
+    public Car(String owner, String brand, String model, int price) {
+        this.owner = owner;
         this.brand = brand;
         this.model = model;
         this.price = price;
@@ -29,8 +32,12 @@ public class Car implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     public String getBrand() {
@@ -58,9 +65,23 @@ public class Car implements Serializable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return price == car.price && Objects.equals(id, car.id) && Objects.equals(owner, car.owner) && Objects.equals(brand, car.brand) && Objects.equals(model, car.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, owner, brand, model, price);
+    }
+
+    @Override
     public String toString() {
         return "Car{" +
                 "id=" + id +
+                ", owner='" + owner + '\'' +
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", price=" + price +

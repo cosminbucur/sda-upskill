@@ -1,7 +1,3 @@
-## chrome plugin
-
-[JSONView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en)
-
 ## catalog API
 
 onlinebooks.com/api/userId
@@ -29,9 +25,10 @@ onlinebooks.com/api/userId
 
 ## microservices
 
-- [catalog](http://localhost:8081/catalog/userId)
-- [books](http://localhost:8082/books/bookId)
-- [ratings](http://localhost:8083/ratings/users/userId)
+- [catalog](http://localhost:8081/catalog/userId) book-catalog-service
+- [books](http://localhost:8082/books/bookId) book-info-service
+- [ratings](http://localhost:8083/ratings/users/userId) ratings-data-service
+- [gateway](http://localhost:8084)  api-gateway
 
 ## security
 
@@ -51,3 +48,30 @@ onlinebooks.com/api/userId
 
 - client sends the message to the discovery server
 - discovery server sends the message to the correct service
+
+# tutorial
+
+- create eureka discovery server
+  [eureka](http://localhost:8761/)
+- create eureka clients
+- register services
+- consume services
+
+- configure rest template to use service discovered urls
+
+  @LoadBalanced eureka knows service names http://[service name]/api
+
+  - [books](http://book-info-service/books/bookId)
+  - [ratings](http://ratings-data-service/ratings/users/userId)
+
+- create zuul gateway
+
+http://localhost<zuul-service-port>/api/books/bookId
+
+http://localhost:8084/api/books/bookId
+
+# how to run
+
+- deploy eureka
+- deploy api-gateway
+- deploy other services

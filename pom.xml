@@ -13,7 +13,6 @@
         <module>fundamentals</module>
         <module>java-advanced</module>
         <module>design-patterns</module>
-        <module>jdbc</module>
 
         <module>spring-core</module>
         <module>spring-aop</module>
@@ -23,7 +22,8 @@
         <module>spring-boot</module>
 
         <!-- persistence -->
-        <module>spring-jdbc</module>
+        <module>jdbc</module>
+        <module>hibernate</module>
         <module>spring-data-jpa</module>
         <module>spring-cache</module>
         <module>spring-boot-redis</module>
@@ -31,14 +31,21 @@
         <!-- web -->
         <module>spring-boot-rest</module>
         <module>testing-advanced</module>
+        <module>spring-resttemplate</module>
         <module>spring-webflux</module>
         <module>json-schema</module>
 
         <!-- security -->
-        <module>spring-security</module>
-        <module>spring-oauth2</module>
+        <module>spring-filter</module>
+        <module>spring-security-memory</module>
+        <module>spring-security-jpa-mysql</module>
+        <module>spring-security-jdbc-mysql</module>
+        <module>spring-security-database</module>
+        <module>spring-security-oauth2</module>
 
         <module>microservices</module>
+        <module>weather-info-service</module>
+        <module>weather-metrics-service</module>
     </modules>
 
     <properties>
@@ -49,8 +56,6 @@
         <spring.version>5.2.9.RELEASE</spring.version>
         <spring-data.version>2.3.4.RELEASE</spring-data.version>
         <hibernate.version>5.4.22.Final</hibernate.version>
-        <hibernate-validator.version>6.1.0.Final</hibernate-validator.version>
-        <javax-validator.version>2.0.1.Final</javax-validator.version>
         <h2.version>1.4.200</h2.version>
         <mysql.version>8.0.18</mysql.version>
         <jackson.version>2.11.2</jackson.version>

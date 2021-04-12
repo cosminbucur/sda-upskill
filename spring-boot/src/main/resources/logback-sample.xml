@@ -15,7 +15,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.sda.spring.aop" level="INFO"/>
+    <logger name="com.sda.spring.boot" level="INFO"/>
     <logger name="org.springframework" level="ERROR"/>
 
     <root level="info">

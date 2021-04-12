@@ -1,0 +1,11 @@
+spring:
+  # configure redis
+  redis:
+    host: localhost
+    port: 6379
+  # configure cache
+  cache:
+    redis:
+      time-to-live: 60000
+      # useful when multiple apps use same redis
+      key-prefix: "sda::"

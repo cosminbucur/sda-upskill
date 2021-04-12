@@ -1,0 +1,27 @@
+server.port: 8084
+
+spring:
+  application:
+    name: api-gateway
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serverviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+      hostname: localhost
+
+zuul:
+  prefix: /api
+  routes:
+    book-catalog-service:
+      path: /catalog/**
+      serviceId: BOOK-CATALOG-SERVICE
+    book-info-service:
+      path: /books/**
+      serviceId: BOOK-INFO-SERVICE
+    ratings-data-service:
+      path: /ratings/**
+      serviceId: RATINGS-DATA-SERVICE

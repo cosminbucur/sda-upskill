@@ -42,26 +42,38 @@ public class RedisConfig {
 
     // used to query data
     @Bean
-    public RedisTemplate<String, String> redisTemplate() {
-        RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
+    public RedisTemplate<String, Object> redisTemplate() {
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(jedisConnectionFactory());
 
         RedisSerializer<String> stringSerializer = new StringRedisSerializer();
-        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = this.initJacksonSerializer();
+
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = initJacksonSerializer();
+
         // Set serialization rules for value and key
-        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+
+        // key as string
         redisTemplate.setKeySerializer(stringSerializer);
-        redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
+        // value as json
+        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+
+        // hash key a string
         redisTemplate.setHashKeySerializer(stringSerializer);
+        // hash value a json
+        redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
+
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
     }
 
     private Jackson2JsonRedisSerializer<Object> initJacksonSerializer() {
         Jackson2JsonRedisSerializer<Object> serializer = new Jackson2JsonRedisSerializer<>(Object.class);
+
         ObjectMapper mapper = new ObjectMapper();
         mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         mapper.activateDefaultTyping(mapper.getPolymorphicTypeValidator(), ObjectMapper.DefaultTyping.NON_FINAL);
+
+        serializer.setObjectMapper(mapper);
         return serializer;
     }
 }

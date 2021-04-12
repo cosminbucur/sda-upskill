@@ -27,21 +27,17 @@ public class CarService implements ICarService {
         return carRepository.save(car);
     }
 
-    // Spring Cache uses the parameters of the method as key and the return value as a value in the cache
-    @Cacheable(value = "cars")
+    // no need for caching here
     @Override
     public List<Car> findAll() {
         log.info("---------------------- findAll() from db");
         return carRepository.findAll();
     }
 
-    @Cacheable(value = "cars")
-    @Override
-    public List<Car> findByBrand(String brand) {
-        return null;
-    }
-
-    @Cacheable(value = "cars")
+    // Spring Cache uses the parameters of the method as key (SimpleKey) and the return value as a value in the cache
+    // If nothing specified, spring uses all the class fields and use those as cache key (mostly HashCode)
+    // to maintain caching but we can override this behavior by providing key information
+    @Cacheable(value = "cars", key = "#id")
     @Override
     public Car findById(Long id) {
         log.info("---------------------- findById() from db");
@@ -49,15 +45,37 @@ public class CarService implements ICarService {
                 .orElseThrow(() -> new IllegalStateException("car not found"));
     }
 
-    // the body of the update() method will always be executed
-    @CachePut(value = "cars", key = "#car.id")
+    // unless - return value
+    @Cacheable(value = "cars", unless = "#owner == 'cristi'")
     @Override
-    public Car update(Long id, Car car) {
+    public Car findByOwner(String owner) {
+        log.info("---------------------- findByOwner() from db");
+        return carRepository.findByOwner(owner);
+    }
+
+    // condition - return list
+    @Cacheable(value = "cars", condition = "#brand == 'bmw'")
+    @Override
+    public List<Car> findByBrand(String brand) {
+        log.info("---------------------- findByBrand() from db");
+        return carRepository.findByBrand(brand);
+    }
+
+    // the body of the update() method will always be executed
+    @CachePut(value = "cars", key = "#id")
+    @Override
+    public Car update(Long id, Car updateInfo) {
         log.info("---------------------- update() from db");
-        if (carRepository.existsById(id)) {
-            return carRepository.save(car);
-        }
-        throw new IllegalArgumentException("id needed");
+
+        return carRepository.findById(id)
+                .map(car -> {
+                    car.setOwner(updateInfo.getOwner());
+                    car.setBrand(updateInfo.getBrand());
+                    car.setModel(updateInfo.getModel());
+                    car.setPrice(updateInfo.getPrice());
+                    return carRepository.save(car);
+                })
+                .orElseThrow(() -> new RuntimeException("car not found"));
     }
 
     @CacheEvict(value = "cars", key = "#id")
@@ -65,5 +83,11 @@ public class CarService implements ICarService {
     public void delete(Long id) {
         log.info("---------------------- delete() from db");
         carRepository.deleteById(id);
+    }
+
+    @CacheEvict(value = "cars", allEntries = true)
+    @Override
+    public void clearCache() {
+        log.info("---------------------- clearCache()");
     }
 }

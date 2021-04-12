@@ -8,11 +8,15 @@ public interface ICarService {
 
     List<Car> findAll();
 
-    List<Car> findByBrand(String brand);
-
     Car findById(Long id);
 
-    Car update(Long id, Car car);
+    Car findByOwner(String owner);
+
+    List<Car> findByBrand(String brand);
+
+    Car update(Long id, Car updateInfo);
 
     void delete(Long id);
+
+    void clearCache();
 }

@@ -1,9 +1,9 @@
 package com.sda.spring.boot.rest.domain;
 
-import com.sda.spring.boot.rest.domain.child.Child;
-import com.sda.spring.boot.rest.domain.child.ChildType;
-import com.sda.spring.boot.rest.domain.parent.Parent;
-import com.sda.spring.boot.rest.domain.parent.ParentRepository;
+import com.sda.spring.boot.rest.sample.domain.child.Child;
+import com.sda.spring.boot.rest.sample.domain.child.ChildType;
+import com.sda.spring.boot.rest.sample.domain.parent.Parent;
+import com.sda.spring.boot.rest.sample.domain.parent.ParentRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -14,7 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 // https://reflectoring.io/spring-boot-data-jpa-test/
 // TIP: enable spring support, no longer needed in spring boot 2 (included in @DataJpaTest)
-// @ExtendWith(SpringExtension.class)
 @DataJpaTest
 class ParentRepositoryTest {
 

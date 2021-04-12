@@ -11,7 +11,7 @@
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>spring-aop/logs/application.log</file>
         <encoder>
-            <pattern>%d{HH:mm:ss,SSS} %-5p [%c] - %m%n</pattern>
+            <pattern>%d{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX' (UTC+0)'", UTC} %-5p %c - %m%n</pattern>
         </encoder>
     </appender>
 

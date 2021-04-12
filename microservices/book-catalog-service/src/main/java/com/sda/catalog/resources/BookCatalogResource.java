@@ -17,8 +17,14 @@ import java.util.stream.Collectors;
 @RestController
 public class BookCatalogResource {
 
-    private static final String BOOKS_RESOURCE = "http://localhost:8082/books/";
-    private static final String RATINGS_RESOURCE = "http://localhost:8083/ratings/";
+    // hard coded urls
+//    private static final String BOOKS_RESOURCE = "http://localhost:8082/books/";
+//    private static final String RATINGS_RESOURCE = "http://localhost:8083/ratings/";
+
+    // service discovered urls
+    private static final String BOOKS_RESOURCE = "http://book-info-service/books/";
+    private static final String RATINGS_RESOURCE = "http://ratings-data-service/ratings/";
+
     private final RestTemplate restTemplate;
 
     @Autowired
@@ -42,8 +48,8 @@ public class BookCatalogResource {
 
                     // put data together
                     return new CatalogItem(
-                            rating.getBookId(),
-                            book.getTitle(),    // from book info service
+                            book.getBookId(),   // from book info service
+                            book.getTitle(),
                             book.getAuthor(),
                             rating.getBookRating());  // from rating service
                 })

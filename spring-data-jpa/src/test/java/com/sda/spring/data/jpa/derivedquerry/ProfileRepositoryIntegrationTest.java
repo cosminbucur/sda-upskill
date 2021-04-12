@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.transaction.Transactional;
 import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -148,16 +147,13 @@ class ProfileRepositoryIntegrationTest {
         assertThat(profileRepository.findByNameOrderByNameDesc(PROFILE_NAME_PAUL).size()).isEqualTo(2);
     }
 
-    @Transactional
     @Test
     void whenDeleteByName() {
         assertThat(profileRepository.deleteByName(PROFILE_NAME_PAUL)).isEqualTo(2);
     }
 
-    @Transactional
     @Test
     void whenDeleteByActive() {
-
         List<Profile> profiles = profileRepository.deleteByActive(true);
 
         assertThat(profiles.size()).isEqualTo(2);

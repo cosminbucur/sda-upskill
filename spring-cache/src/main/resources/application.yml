@@ -7,7 +7,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      use-new-id-generator-mappings: true
     properties:
-      hibernate.format_sql: false
-    show-sql: true
-  h2.console.enabled: true # the JDBC URL is jdbc:h2:mem:testdb
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        show_sql: true
+        format_sql: false

@@ -16,6 +16,7 @@ import java.util.List;
 public class CarService implements ICarService {
 
     private static final Logger log = LoggerFactory.getLogger(CarService.class);
+
     private final CarRepository carRepository;
 
     @Autowired
@@ -29,55 +30,65 @@ public class CarService implements ICarService {
     }
 
     // Spring Cache uses the parameters of the method as key and the return value as a value in the cache
-    // in cache => cars::SimpleKey[]
-    @Cacheable
+    // if default cache, in cache => cars::SimpleKey[]
     @Override
     public List<Car> findAll() {
         log.info("---------------------- findAll() from db");
         return carRepository.findAll();
     }
 
-    @Cacheable
-    @Override
-    public List<Car> findByBrand(String brand) {
-        return null;
-    }
-
-    // in cache => cars::1
-    @Cacheable
+    // in cache => cars::2
+    @Cacheable(key = "#id")
     @Override
     public Car findById(Long id) {
         log.info("---------------------- findById() from db");
         return carRepository.findById(id)
-                .orElseThrow(() -> new IllegalStateException("car not found"));
+                .orElseThrow(() -> new RuntimeException("car not found"));
+    }
+
+    // unless - return value
+    @Cacheable(unless = "#owner == 'cristi'")
+    @Override
+    public Car findByOwner(String owner) {
+        log.info("---------------------- findByOwner() from db");
+        return carRepository.findByOwner(owner);
+    }
+
+    // condition - return list
+    @Cacheable(condition = "#brand == 'bmw'")
+    @Override
+    public List<Car> findByBrand(String brand) {
+        log.info("---------------------- findByBrand() from db");
+        return carRepository.findByBrand(brand);
     }
 
     // the body of the update() method will always be executed
-    @CachePut(key = "#car.id")
+    @CachePut(key = "#id")
     @Override
-    public Car update(Long id, Car car) {
+    public Car update(Long id, Car updateInfo) {
         log.info("---------------------- update() from db");
-        if (carRepository.existsById(id)) {
-            return carRepository.save(car);
-        }
-        throw new IllegalArgumentException("id needed");
+
+        return carRepository.findById(id)
+                .map(car -> {
+                    car.setOwner(updateInfo.getOwner());
+                    car.setBrand(updateInfo.getBrand());
+                    car.setModel(updateInfo.getModel());
+                    car.setPrice(updateInfo.getPrice());
+                    return carRepository.save(car);
+                })
+                .orElseThrow(() -> new RuntimeException("car not found"));
     }
 
-    /*
-    @Caching(evict = {
-      @CacheEvict("addresses"),
-      @CacheEvict(value="directory", key="#customer.name") })
-
-      @CachePut(value="addresses", condition="#customer.name=='Tom'")
-
-      @CachePut(value="addresses", unless="#result.length()<64")
-     */
-
-    //    @CacheEvict(value = "users", allEntries=true)
     @CacheEvict(key = "#id")
     @Override
     public void delete(Long id) {
         log.info("---------------------- delete() from db");
         carRepository.deleteById(id);
+    }
+
+    @CacheEvict(allEntries = true)
+    @Override
+    public void clearCache() {
+        log.info("---------------------- clearCache()");
     }
 }

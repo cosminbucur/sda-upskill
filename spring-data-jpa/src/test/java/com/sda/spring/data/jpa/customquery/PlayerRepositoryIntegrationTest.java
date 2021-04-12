@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.transaction.Transactional;
 import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -38,7 +37,6 @@ class PlayerRepositoryIntegrationTest {
         playerRepository.deleteAll();
     }
 
-    @Transactional
     @Test
     void whenSave_thenReturnsCorrectResult() {
         assertThat(playerRepository.save(5L, PLAYER_NAME_PAUL, true)).isEqualTo(1);
@@ -154,19 +152,16 @@ class PlayerRepositoryIntegrationTest {
         assertThat(playerRepository.findByNameOrderByNameDesc(PLAYER_NAME_PAUL).size()).isEqualTo(2);
     }
 
-    @Transactional
     @Test
     void whenUpdateName() {
         assertThat(playerRepository.updateName("update when false", false)).isEqualTo(2);
     }
 
-    @Transactional
     @Test
     void whenDeleteByName() {
         assertThat(playerRepository.deleteByName(PLAYER_NAME_PAUL)).isEqualTo(2);
     }
 
-    @Transactional
     @Test
     void whenDeleteByActive() {
         assertThat(playerRepository.deleteByActive(true)).isEqualTo(2);

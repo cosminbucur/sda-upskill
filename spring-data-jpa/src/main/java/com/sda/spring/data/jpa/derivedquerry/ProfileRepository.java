@@ -2,6 +2,7 @@ package com.sda.spring.data.jpa.derivedquerry;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import javax.transaction.Transactional;
 import java.time.ZonedDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -68,8 +69,10 @@ public interface ProfileRepository extends JpaRepository<Profile, Integer> {
 
     // delete
 
+    @Transactional
     Long deleteByName(String name);
 
+    @Transactional
     List<Profile> deleteByActive(boolean active);
 
 }

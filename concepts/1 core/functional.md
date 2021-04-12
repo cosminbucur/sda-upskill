@@ -13,8 +13,8 @@
         - bi functions
 
     - operators
-        - unary operators (x)
-        - binary operators (x)
+        - unary operators
+        - binary operators
 
         - consumer
         - predicate
