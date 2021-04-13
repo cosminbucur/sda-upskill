@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>weather-server</artifactId>
+    <artifactId>weather-info-service</artifactId>
 
     <properties>
         <spring-boot.version>2.4.2</spring-boot.version>

@@ -16,3 +16,4 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
         show_sql: true
         format_sql: false
+  h2.console.enabled: true
