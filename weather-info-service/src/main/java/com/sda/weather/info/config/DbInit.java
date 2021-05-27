@@ -23,7 +23,7 @@ public class DbInit {
     @Bean
     public CommandLineRunner initialData() {
         return args -> {
-            Location location = new Location("test", 123L, -25L, "region", "country");
+            Location location = new Location("test", 123.0, -25.0, "region", "country");
             Location savedLocation = locationRepository.save(location);
 
             WeatherInfo weatherInfo = new WeatherInfo(LocalDate.now(), 123L, 234L, 345L, "NE");

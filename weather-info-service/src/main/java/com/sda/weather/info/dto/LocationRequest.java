@@ -1,39 +1,29 @@
-package com.sda.weather.info.model;
+package com.sda.weather.info.dto;
 
-import javax.persistence.*;
+import org.springframework.validation.annotation.Validated;
 
-@Entity
-public class Location {
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column(name = "location_name")
+@Validated
+public class LocationRequest {
+
+    @NotEmpty(message = "location name should not be empty")
     private String locationName;
+
+    @Min(value = -90, message = "min latitude -90")
+    @Max(value = 90, message = "max latitude 90")
     private Double latitude;
+
+    @Min(value = -180, message = "min longitude -180")
+    @Max(value = 180, message = "max longitude 180")
     private Double longitude;
+
     private String region;
-    @Column(name = "country_name")
+
+    @NotEmpty(message = "country name should not be empty")
     private String countryName;
-
-    public Location() {
-    }
-
-    public Location(String locationName, Double latitude, Double longitude, String region, String countryName) {
-        this.locationName = locationName;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.region = region;
-        this.countryName = countryName;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getLocationName() {
         return locationName;
