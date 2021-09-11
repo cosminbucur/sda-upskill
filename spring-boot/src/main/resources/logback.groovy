@@ -1,4 +1,4 @@
-def LOG_PATH = "spring-boot/logs"
+def LOG_PATH = "spring-boot/log"
 def LOG_PATTERN = "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
 
 appender("Console-Appender", ConsoleAppender) {
@@ -8,7 +8,7 @@ appender("Console-Appender", ConsoleAppender) {
 }
 
 appender("File-Appender", FileAppender) {
-    file = "${LOG_PATH}/application.log"
+    file = "${LOG_PATH}/app.log"
     encoder(PatternLayoutEncoder) {
         pattern = LOG_PATTERN
         outputPatternAsHeader = true

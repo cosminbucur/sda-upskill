@@ -8,8 +8,9 @@
 
 # Maven
 log/
-*/target/
-*/logs/
+target/
 
 # sub folders
+*/log/
+*/target/
 /microservices/*/target/

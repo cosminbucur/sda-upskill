@@ -14,7 +14,7 @@ spring:
       #  create-drop (create the schema and drop it at the end)
       #  update (update the schema if are changes)
       #  validate (validate the schema)
-      ddl-auto: create-drop
+      ddl-auto: create
       # hibernate 5 default naming strategy
       naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       # ??

@@ -1,7 +1,7 @@
 # starter-web or jpa is using logback with slf4j as implementation
 logging:
   # default logging goes to console
-  file: spring-boot/logs/boot.log # write logs to this file
+  file: spring-boot/log/app.log # write logs to this file
   patter:
     # logging pattern for the console
     console: %d{yyyy-MM-dd HH:mm:ss} - %msg%n
